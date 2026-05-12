@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SmartFit — Settings</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=DM+Sans:wght@300;400;500;600&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="css/orders.css" />
+  <link rel="stylesheet" href="css/settings.css" />
+
+</head>
+
+<body>
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-brand">
+      <span class="brand-icon"><i class="bi bi-gem"></i></span>
+      <span class="brand-name">SmartFit</span>
+    </div>
+    <div class="sidebar-section-label">Main</div>
+    <nav class="sidebar-nav">
+      <a href="index.html" class="sidebar-link"><i class="bi bi-grid-1x2"></i><span>Dashboard</span></a>
+      <a href="products.html" class="sidebar-link"><i class="bi bi-bag-heart"></i><span>Products</span></a>
+      <a href="orders.html" class="sidebar-link"><i class="bi bi-receipt"></i><span>Orders</span></a>
+      <a href="users.html" class="sidebar-link"><i class="bi bi-people"></i><span>Users</span></a>
+      <a href="reviews.html" class="sidebar-link"><i class="bi bi-stars"></i><span>Reviews</span>
+      </a>
+      <a href="contacts.html" class="sidebar-link">
+        <i class="bi bi-chat-dots"></i>
+        <span>Messages</span>
+        <span class="badge-new" id="sidebarNewBadge" style="display:none">0</span>
+      </a>
+      <a href="categories.html" class="sidebar-link"><i class="bi bi-grid-3x3-gap"></i><span>Categories</span></a>
+      <a href="subcategories.html" class="sidebar-link"><i class="bi bi-diagram-3"></i><span>SubCategories</span></a>
+    </nav>
+    <div class="sidebar-section-label">System</div>
+    <nav class="sidebar-nav">
+      <a href="settings.html" class="sidebar-link active"><i class="bi bi-gear"></i><span>Settings</span></a>
+    </nav>
+    <div class="sidebar-footer">
+      <div class="sidebar-user">
+        <div class="user-avatar-wrap">
+          <img src="" alt="Admin" class="user-avatar" id="sidebarUserAvatar" />
+          <span class="status-dot"></span>
+        </div>
+        <div class="user-info">
+          <div class="user-name" id="sidebarUserName">—</div>
+          <div class="user-role" id="sidebarUserEmail">—</div>
+        </div>
+        <a onclick="handleLogout()" class="user-logout" title="Logout"><i class="bi bi-box-arrow-right"></i></a>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+  <div class="main-wrapper">
+
+    <header class="top-navbar">
+      <div class="navbar-left">
+        <button class="sidebar-toggle" id="sidebarToggle"><i class="bi bi-list"></i></button>
+        <div class="page-breadcrumb">
+          <span class="breadcrumb-root">SmartFit</span>
+          <i class="bi bi-chevron-right"></i>
+          <span class="breadcrumb-current">Settings</span>
+        </div>
+      </div>
+      <div class="navbar-right">
+        <button class="nav-action-btn" id="themeToggle"><i class="bi bi-moon-stars"></i></button>
+        <a href="contacts.html" class="nav-action-btn position-relative" title="Notifications">
+          <i class="bi bi-bell"></i>
+          <span class="notif-badge" id="notifBadge">—</span>
+        </a>
+        <div class="navbar-divider"></div>
+        <div class="dropdown">
+          <button class="navbar-user-btn dropdown-toggle" data-bs-toggle="dropdown">
+            <div id="topbarAvatarWrap" style="width:28px;height:28px;border-radius:50%;overflow:hidden;flex-shrink:0">
+              <img src="https://i.pravatar.cc/40?img=47" alt="Admin" style="width:100%;height:100%;object-fit:cover" />
+            </div>
+            <span class="d-none d-md-inline" id="topbarName">Admin</span>
+          </button>
+          <ul class="dropdown-menu dropdown-menu-end">
+            <li class="dropdown-user-header">
+              <div class="dropdown-user-name" id="dropdownUserName">—</div>
+              <div class="dropdown-user-email" id="dropdownUserEmail">—</div>
+            </li>
+            <li>
+              <hr class="dropdown-divider" />
+            </li>
+            <li><a class="dropdown-item" href="settings.html"><i class="bi bi-gear me-2"></i>Settings</a></li>
+            <li>
+              <hr class="dropdown-divider" />
+            </li>
+            <li><a class="dropdown-item text-danger" onclick="handleLogout()"><i class="bi bi-box-arrow-right me-2"></i>Logout</a></li>
+          </ul>
+        </div>
+      </div>
+    </header>
+
+    <main class="page-content">
+
+      <!-- Page Header -->
+      <div class="page-header">
+        <div>
+          <h1 class="page-title">Settings</h1>
+          <p class="page-subtitle">Manage your account, profile and security preferences.</p>
+        </div>
+      </div>
+
+      <div class="settings-layout">
+
+        <!-- LEFT: Profile Card -->
+        <div class="profile-card" id="profileCard">
+          <div class="profile-card-banner"></div>
+          <div class="profile-card-inner">
+
+            <!-- Skeleton state -->
+            <div id="profileCardSkeleton">
+              <div class="skeleton skeleton-profile-avatar" style="margin:0 auto 16px"></div>
+              <div class="skeleton skeleton-text" style="width:140px;height:18px"></div>
+              <div class="skeleton skeleton-text" style="width:80px;height:20px;border-radius:20px"></div>
+              <div class="profile-divider"></div>
+              <div class="skeleton skeleton-text" style="width:90%"></div>
+              <div class="skeleton skeleton-text" style="width:80%"></div>
+              <div class="skeleton skeleton-text" style="width:85%"></div>
+            </div>
+
+            <!-- Loaded state -->
+            <div id="profileCardContent" style="display:none">
+              <div class="profile-avatar-wrap">
+                <img id="pcAvatar" class="profile-avatar" src="" alt="avatar"
+                  onerror="this.style.display='none';document.getElementById('pcAvatarFallback').style.display='flex'">
+                <div id="pcAvatarFallback" class="profile-avatar-fallback" style="display:none"></div>
+                <div class="profile-online-dot"></div>
+              </div>
+
+              <div class="profile-name" id="pcName">—</div>
+              <div class="role-badge"><i class="bi bi-shield-check"></i><span id="pcRole">Admin</span></div>
+
+              <div class="profile-divider"></div>
+
+              <div class="profile-info-row">
+                <div class="profile-info-icon"><i class="bi bi-envelope"></i></div>
+                <div>
+                  <div class="profile-info-label">Email</div>
+                  <div class="profile-info-value" id="pcEmail">—</div>
+                </div>
+              </div>
+
+              <div class="profile-info-row">
+                <div class="profile-info-icon"><i class="bi bi-geo-alt"></i></div>
+                <div>
+                  <div class="profile-info-label">Location</div>
+                  <div class="profile-info-value" id="pcLocation">—</div>
+                </div>
+              </div>
+
+              <div class="profile-info-row">
+                <div class="profile-info-icon"><i class="bi bi-calendar3"></i></div>
+                <div>
+                  <div class="profile-info-label">Member Since</div>
+                  <div class="profile-info-value" id="pcCreated">—</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- RIGHT: Settings Content -->
+        <div class="settings-content">
+
+          <!-- Tabs -->
+          <div class="settings-tabs">
+            <div class="settings-tab active" data-tab="profile">
+              <i class="bi bi-person"></i> Profile Settings
+            </div>
+            <div class="settings-tab" data-tab="security">
+              <i class="bi bi-shield-lock"></i> Security Settings
+            </div>
+          </div>
+
+          <!-- TAB 1: Profile -->
+          <div class="tab-panel active" id="tab-profile">
+
+            <!-- Image upload -->
+            <div class="avatar-upload-section">
+              <div class="avatar-preview-wrap">
+                <img id="previewAvatar" class="avatar-preview" src="" alt="preview"
+                  onerror="this.style.display='none';document.getElementById('previewAvatarFallback').style.display='flex'">
+                <div id="previewAvatarFallback" class="avatar-preview-fallback" style="display:none"></div>
+              </div>
+              <div class="avatar-upload-info">
+                <div class="avatar-upload-title">Profile Photo</div>
+                <div class="avatar-upload-hint">JPG, PNG or GIF. Max size 2MB.</div>
+                <label for="imageFileInput" class="btn-upload">
+                  <i class="bi bi-cloud-upload"></i> Upload Photo
+                </label>
+                <input type="file" id="imageFileInput" accept="image/*">
+              </div>
+            </div>
+
+            <div class="section-title"><i class="bi bi-person-lines-fill"></i> Personal Information</div>
+            <div class="section-subtitle">Update your personal details and contact information.</div>
+
+            <!-- Skeleton -->
+            <div id="formSkeleton">
+              <div class="form-grid" style="margin-bottom:18px">
+                <div class="skeleton skeleton-input"></div>
+                <div class="skeleton skeleton-input"></div>
+                <div class="skeleton skeleton-input"></div>
+                <div class="skeleton skeleton-input"></div>
+                <div class="skeleton skeleton-input" style="grid-column:1/-1"></div>
+              </div>
+            </div>
+
+            <!-- Actual form -->
+            <div id="profileForm" style="display:none">
+              <div class="form-grid">
+                <div class="form-group">
+                  <label class="form-label">First Name</label>
+                  <input type="text" class="form-input" id="firstName" placeholder="First name">
+                  <span class="field-error" id="err-firstName">This field is required.</span>
+                </div>
+                <div class="form-group">
+                  <label class="form-label">Last Name</label>
+                  <input type="text" class="form-input" id="lastName" placeholder="Last name">
+                  <span class="field-error" id="err-lastName">This field is required.</span>
+                </div>
+                <div class="form-group">
+                  <label class="form-label">Email Address</label>
+                  <input type="email" class="form-input" id="emailField" placeholder="Email" readonly>
+                </div>
+                <div class="form-group">
+                  <label class="form-label">Phone Number</label>
+                  <input type="text" class="form-input" id="phoneNumber" placeholder="Phone number">
+                </div>
+                <div class="form-group full">
+                  <label class="form-label">Address</label>
+                  <input type="text" class="form-input" id="address" placeholder="Street address">
+                </div>
+                <div class="form-group">
+                  <label class="form-label">Zip Code</label>
+                  <input type="text" class="form-input" id="zipCode" placeholder="Zip code">
+                </div>
+              </div>
+
+              <div class="form-divider"></div>
+
+              <div class="section-title" style="margin-bottom:4px"><i class="bi bi-geo-alt-fill"></i> Location</div>
+              <div class="section-subtitle">Select your state and city.</div>
+
+              <div class="form-grid" style="margin-bottom:28px">
+                <div class="form-group">
+                  <label class="form-label">State</label>
+                  <select class="form-select" id="stateSelect">
+                    <option value="">— Select State —</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label class="form-label">City</label>
+                  <select class="form-select" id="citySelect" disabled>
+                    <option value="">— Select City —</option>
+                  </select>
+                </div>
+              </div>
+
+              <button class="btn-save" id="saveProfileBtn" onclick="updateProfile()">
+                <i class="bi bi-check-lg"></i> Save Changes
+              </button>
+            </div>
+          </div>
+
+          <!-- TAB 2: Security -->
+          <div class="tab-panel" id="tab-security">
+
+            <div class="section-title"><i class="bi bi-shield-lock-fill"></i> Change Password</div>
+            <div class="section-subtitle">Keep your account secure with a strong password.</div>
+
+            <div class="form-grid" style="max-width:520px">
+              <div class="form-group full">
+                <label class="form-label">Current Password</label>
+                <div class="input-wrap">
+                  <input type="password" class="form-input" id="currentPassword" placeholder="Current password">
+                  <button class="input-toggle" type="button" onclick="togglePw('currentPassword', this)">
+                    <i class="bi bi-eye"></i>
+                  </button>
+                </div>
+                <span class="field-error" id="err-currentPassword">Current password is required.</span>
+              </div>
+              <div class="form-group full">
+                <label class="form-label">New Password</label>
+                <div class="input-wrap">
+                  <input type="password" class="form-input" id="newPassword" placeholder="New password"
+                    oninput="checkStrength(this.value)">
+                  <button class="input-toggle" type="button" onclick="togglePw('newPassword', this)">
+                    <i class="bi bi-eye"></i>
+                  </button>
+                </div>
+                <div class="strength-bar-wrap">
+                  <div class="strength-seg" id="seg1"></div>
+                  <div class="strength-seg" id="seg2"></div>
+                  <div class="strength-seg" id="seg3"></div>
+                  <div class="strength-seg" id="seg4"></div>
+                </div>
+                <div class="strength-label" id="strengthLabel"></div>
+                <span class="field-error" id="err-newPassword">New password is required.</span>
+              </div>
+              <div class="form-group full">
+                <label class="form-label">Confirm New Password</label>
+                <div class="input-wrap">
+                  <input type="password" class="form-input" id="confirmPassword" placeholder="Confirm new password">
+                  <button class="input-toggle" type="button" onclick="togglePw('confirmPassword', this)">
+                    <i class="bi bi-eye"></i>
+                  </button>
+                </div>
+                <span class="field-error" id="err-confirmPassword">Passwords do not match.</span>
+              </div>
+            </div>
+
+            <div style="margin-top:28px">
+              <button class="btn-change-pw" id="changePwBtn" onclick="changePassword()">
+                <i class="bi bi-lock"></i> Change Password
+              </button>
+            </div>
+          </div>
+
+        </div><!-- /settings-content -->
+      </div><!-- /settings-layout -->
+
+    </main>
+
+    <footer class="page-footer">
+      <span>© 2025 SmartFit. Premium Fashion Intelligence.</span>
+      <span class="ms-auto">Settings Module v1.0</span>
+    </footer>
+  </div>
+
+  <div class="toast-container" id="toastContainer"></div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="js/auth-guard.js"></script>
+  <script src="js/settings.js"></script>
+</body>
+
+</html>

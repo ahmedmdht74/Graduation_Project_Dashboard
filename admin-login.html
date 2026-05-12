@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SMARTFIT — Admin Login</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css" />
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.11.3/font/bootstrap-icons.min.css" />
+    <link rel="stylesheet" href="css/admin-login.css" />
+</head>
+
+<body>
+
+    <!-- SPLIT SCREEN -->
+    <div class="login-wrapper">
+
+        <!-- LEFT PANEL -->
+        <div class="left-panel">
+
+            <!-- animated gradient orbs -->
+            <div class="orb orb-1"></div>
+            <div class="orb orb-2"></div>
+            <div class="orb orb-3"></div>
+
+            <!-- grid overlay -->
+            <div class="grid-overlay"></div>
+
+            <div class="left-content">
+
+                <!-- logo -->
+                <div class="brand-row">
+                    <div class="brand-icon"><i class="bi bi-gem"></i></div>
+                    <span class="brand-name">SMARTFIT</span>
+                </div>
+
+                <!-- headline -->
+                <div class="left-headline">
+                    <h1 class="left-title">Premium Fashion<br>Management</h1>
+                    <p class="left-sub">One dashboard. Total control over your luxury brand ecosystem.</p>
+                </div>
+
+                <!-- feature pills -->
+                <div class="feature-pills">
+                    <div class="feature-pill"><i class="bi bi-lightning-charge-fill"></i> Real-time Analytics</div>
+                    <div class="feature-pill"><i class="bi bi-shield-check-fill"></i> Secure & Encrypted</div>
+                    <div class="feature-pill"><i class="bi bi-boxes"></i> Full Products Control</div>
+                </div>
+
+                <!-- floating card preview -->
+                <div class="preview-card">
+                    <div class="preview-card-row">
+                        <div class="preview-dot green"></div>
+                        <span>Live Dashboard</span>
+                    </div>
+                    <div class="preview-stats">
+                        <div class="preview-stat">
+                            <div class="preview-stat-val">3.4k</div>
+                            <div class="preview-stat-label">Orders</div>
+                        </div>
+                        <div class="preview-divider"></div>
+                        <div class="preview-stat">
+                            <div class="preview-stat-val">98%</div>
+                            <div class="preview-stat-label">Uptime</div>
+                        </div>
+                        <div class="preview-divider"></div>
+                        <div class="preview-stat">
+                            <div class="preview-stat-val">4.9★</div>
+                            <div class="preview-stat-label">Rating</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- RIGHT PANEL -->
+        <div class="right-panel">
+
+            <div class="login-card">
+
+                <!-- card header -->
+                <div class="login-card-header">
+                    <div class="login-logo-sm">
+                        <div class="brand-icon sm"><i class="bi bi-gem"></i></div>
+                    </div>
+                    <h2 class="login-title">Welcome back</h2>
+                    <p class="login-subtitle">Sign in to your admin dashboard</p>
+                </div>
+
+                <!-- form -->
+                <div class="login-form">
+
+                    <!-- email -->
+                    <div class="field-group" id="emailGroup">
+                        <label class="field-label">Email Address</label>
+                        <div class="input-wrap">
+                            <i class="bi bi-envelope input-icon"></i>
+                            <input type="email" id="emailInput" class="field-input" placeholder="admin@smartfit.com"
+                                autocomplete="email" />
+                        </div>
+                        <span class="field-error" id="emailError"></span>
+                    </div>
+
+                    <!-- password -->
+                    <div class="field-group" id="passwordGroup">
+                        <label class="field-label">Password</label>
+                        <div class="input-wrap">
+                            <i class="bi bi-lock input-icon"></i>
+                            <input type="password" id="passwordInput" class="field-input"
+                                placeholder="Enter your password" autocomplete="current-password" />
+                            <button class="pw-toggle" id="pwToggle" type="button" tabindex="-1">
+                                <i class="bi bi-eye" id="pwToggleIcon"></i>
+                            </button>
+                        </div>
+                        <span class="field-error" id="passwordError"></span>
+                    </div>
+
+                    <!-- remember me -->
+                    <div class="remember-row">
+                        <label class="remember-label">
+                            <input type="checkbox" id="rememberMe" class="remember-check" />
+                            <span class="remember-custom"></span>
+                            Remember me
+                        </label>
+                    </div>
+
+                    <!-- submit -->
+                    <button class="login-btn" id="loginBtn" type="button">
+                        <span id="loginBtnText"><i class="bi bi-arrow-right-circle me-2"></i>Sign In</span>
+                        <span id="loginBtnLoader" style="display:none">
+                            <span class="spinner-border spinner-border-sm me-2"></span>Signing in…
+                        </span>
+                    </button>
+
+                    <!-- global error -->
+                    <div class="global-error" id="globalError" style="display:none"></div>
+
+                </div>
+
+                <!-- footer -->
+                <div class="login-card-footer">
+                    <i class="bi bi-shield-lock-fill"></i>
+                    Secured with 256-bit SSL encryption
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- TOAST CONTAINER -->
+    <div class="toast-container-custom" id="toastContainer"></div>
+
+    <script src="/js/auth-guard.js"></script>
+    <script src="/js/admin-login.js"></script>
+</body>
+
+</html>

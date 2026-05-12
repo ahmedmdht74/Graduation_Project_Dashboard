@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SmartFit — Edit Product</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=DM+Sans:wght@300;400;500;600&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="css/products.css" />
+</head>
+
+<body>
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-brand">
+      <span class="brand-icon"><i class="bi bi-gem"></i></span>
+      <span class="brand-name">SmartFit</span>
+    </div>
+    <div class="sidebar-section-label">Main</div>
+    <nav class="sidebar-nav">
+      <a href="index.html" class="sidebar-link"><i class="bi bi-grid-1x2"></i><span>Dashboard</span></a>
+      <a href="products.html" class="sidebar-link active"><i class="bi bi-bag-heart"></i><span>Products</span></a>
+      <a href="orders.html" class="sidebar-link"><i class="bi bi-receipt"></i><span>Orders</span></a>
+      <a href="users.html" class="sidebar-link"><i class="bi bi-people"></i><span>Customers</span></a>
+      <a href="reviews.html" class="sidebar-link"><i class="bi bi-stars"></i><span>Reviews</span></a>
+      <a href="contacts.html" class="sidebar-link">
+        <i class="bi bi-chat-dots"></i>
+        <span>Messages</span>
+        <span class="badge-new" id="sidebarNewBadge" style="display:none">0</span>
+      </a>
+      <a href="categories.html" class="sidebar-link"><i class="bi bi-grid-3x3-gap"></i><span>Categories</span></a>
+      <a href="subcategories.html" class="sidebar-link"><i class="bi bi-diagram-3"></i><span>SubCategories</span></a>
+    </nav>
+    <div class="sidebar-section-label">System</div>
+    <nav class="sidebar-nav">
+      <a href="settings.html" class="sidebar-link"><i class="bi bi-gear"></i><span>Settings</span></a>
+    </nav>
+    <div class="sidebar-footer">
+      <div class="sidebar-user">
+        <div class="user-avatar-wrap">
+          <img src="" alt="Admin" class="user-avatar" id="sidebarUserAvatar" />
+          <span class="status-dot"></span>
+        </div>
+        <div class="user-info">
+          <div class="user-name" id="sidebarUserName">—</div>
+          <div class="user-role" id="sidebarUserEmail">—</div>
+        </div>
+        <a onclick="handleLogout()" class="user-logout" title="Logout"><i class="bi bi-box-arrow-right"></i></a>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+  <!-- MAIN -->
+  <div class="main-wrapper">
+
+    <header class="top-navbar">
+      <div class="navbar-left">
+        <button class="sidebar-toggle" id="sidebarToggle"><i class="bi bi-list"></i></button>
+        <div class="page-breadcrumb">
+          <span class="breadcrumb-root">SmartFit</span>
+          <i class="bi bi-chevron-right"></i>
+          <a href="products.html" style="color:var(--text-secondary);text-decoration:none">Products</a>
+          <i class="bi bi-chevron-right"></i>
+          <span class="breadcrumb-current" id="editBreadcrumb">Edit Product</span>
+        </div>
+      </div>
+      <div class="navbar-right">
+        <button class="nav-action-btn" id="themeToggle"><i class="bi bi-moon-stars"></i></button>
+        <div class="navbar-divider"></div>
+        <div class="dropdown">
+          <button class="navbar-user-btn dropdown-toggle" data-bs-toggle="dropdown">
+            <img src="" alt="Admin" id="navbarUserAvatar" />
+            <span class="d-none d-md-inline" id="navbarUserName">—</span>
+          </button>
+          <ul class="dropdown-menu dropdown-menu-end">
+            <li class="dropdown-user-header">
+              <div class="dropdown-user-name" id="dropdownUserName">—</div>
+              <div class="dropdown-user-email" id="dropdownUserEmail">—</div>
+            </li>
+            <li>
+              <hr class="dropdown-divider" />
+            </li>
+            <li><a class="dropdown-item" href="settings.html"><i class="bi bi-person me-2"></i>Settings</a></li>
+            <li>
+              <hr class="dropdown-divider" />
+            </li>
+            <li><a class="dropdown-item text-danger" onclick="handleLogout()"><i
+                  class="bi bi-box-arrow-right me-2"></i>Logout</a></li>
+          </ul>
+        </div>
+      </div>
+    </header>
+
+    <main class="page-content">
+
+      <!-- Page Header -->
+      <div class="page-header">
+        <div>
+          <h1 class="page-title" id="editPageTitle">Edit Product</h1>
+          <p class="page-subtitle">ID: <span id="editProductId"
+              style="font-family:'Cormorant Garamond',serif;color:var(--purple-500);font-weight:600">#—</span></p>
+        </div>
+        <div class="page-header-actions">
+          <a href="products.html" class="btn-ghost"><i class="bi bi-arrow-left me-1"></i> Back</a>
+          <button class="btn-purple" onclick="updateProduct()"><i class="bi bi-check2 me-1"></i> Save Changes</button>
+        </div>
+      </div>
+
+      <!-- Section Tabs -->
+      <div class="section-tabs">
+        <button class="sec-tab active" onclick="showEditTab('info')">Product Info</button>
+        <button class="sec-tab" onclick="showEditTab('variants')">Variants (<span id="varTabCount">0</span>)</button>
+        <button class="sec-tab" onclick="showEditTab('sizechart')">Size Chart</button>
+      </div>
+
+      <!-- ─── TAB: Product Info ─── -->
+      <div id="editTab-info" class="edit-tab">
+
+        <div class="row g-4">
+          <div class="col-lg-8">
+            <div class="section-card">
+              <div class="section-header">
+                <div class="section-icon purple-soft"><i class="bi bi-info-circle-fill"></i></div>
+                <div>
+                  <div class="section-title">Basic Information</div>
+                  <div class="section-subtitle">Update product name and description</div>
+                </div>
+              </div>
+              <div class="section-body">
+                <div class="form-group mb-4">
+                  <label class="form-label">Product Name <span class="required">*</span></label>
+                  <input type="text" class="form-control" id="editProductName" />
+                </div>
+                <div class="form-group">
+                  <label class="form-label">Description</label>
+                  <textarea class="form-control" id="editProductDesc" rows="5"></textarea>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-4">
+            <div class="section-card">
+              <div class="section-header">
+                <div class="section-icon gold-soft"><i class="bi bi-tag-fill"></i></div>
+                <div>
+                  <div class="section-title">Classification</div>
+                </div>
+              </div>
+              <div class="section-body">
+                <div class="form-group mb-3">
+                  <label class="form-label">Category</label>
+                  <select class="form-control" id="editCategory" onchange="updateSubcategoriesEdit()">
+                    <option value="">Select…</option>
+                    <option value="1">Tops</option>
+                    <option value="2">Bottoms</option>
+                    <option value="3">Outerwear</option>
+                    <option value="4">Accessories</option>
+                    <option value="5">Footwear</option>
+                  </select>
+                </div>
+                <div class="form-group mb-3">
+                  <label class="form-label">Sub-Category</label>
+                  <select class="form-control" id="editSubCategory">
+                    <option value="">Select…</option>
+                  </select>
+                </div>
+
+              </div>
+            </div>
+
+            <!-- Quick Stats -->
+            <div class="section-card" style="margin-top:0">
+              <div class="section-header">
+                <div class="section-icon teal-soft"><i class="bi bi-graph-up"></i></div>
+                <div>
+                  <div class="section-title">Quick Stats</div>
+                </div>
+              </div>
+              <div class="section-body">
+                <div style="display:flex;flex-direction:column;gap:12px">
+                  <div style="display:flex;justify-content:space-between;align-items:center">
+                    <span style="font-size:.8rem;color:var(--text-muted)">Total Variants</span>
+                    <span style="font-weight:700;font-size:.95rem" id="qsVariants">—</span>
+                  </div>
+                  <div style="display:flex;justify-content:space-between;align-items:center">
+                    <span style="font-size:.8rem;color:var(--text-muted)">Total Stock</span>
+                    <span style="font-weight:700;font-size:.95rem" id="qsStock">—</span>
+                  </div>
+                  <div style="display:flex;justify-content:space-between;align-items:center">
+                    <span style="font-size:.8rem;color:var(--text-muted)">Base Price</span>
+                    <span style="font-weight:700;font-size:.95rem;color:var(--purple-500)" id="qsPrice">—</span>
+                  </div>
+                  <div style="display:flex;justify-content:space-between;align-items:center">
+                    <span style="font-size:.8rem;color:var(--text-muted)">Created</span>
+                    <span style="font-size:.8rem;color:var(--text-secondary)" id="qsCreated">—</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+      <!-- ─── TAB: Existing Variants ─── -->
+      <div id="editTab-variants" class="edit-tab d-none">
+
+        <div class="section-card">
+          <div class="section-header">
+            <div class="section-icon indigo-soft"><i class="bi bi-layers-fill"></i></div>
+            <div>
+              <div class="section-title">Manage Variants</div>
+              <div class="section-subtitle">Edit price, stock and images per variant</div>
+            </div>
+            <div class="ms-auto">
+              <button class="btn-ghost btn-sm" onclick="applyToAll()">
+                <i class="bi bi-magic me-1"></i> Bulk Edit
+              </button>
+            </div>
+          </div>
+
+          <!-- Apply all strip -->
+          <div id="applyAllStrip" class="d-none"
+            style="padding:14px 24px;background:var(--purple-100);border-bottom:1px solid var(--purple-200)">
+            <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap">
+              <span style="font-size:.82rem;font-weight:600;color:var(--purple-600)"><i class="bi bi-magic me-1"></i>
+                Apply to all variants:</span>
+              <input type="number" class="var-input price" id="applyPrice" placeholder="Price ($)" />
+              <input type="number" class="var-input stock" id="applyStock" placeholder="Stock" />
+              <button class="btn-purple btn-sm" onclick="doApplyToAll()">Apply</button>
+              <button class="btn-ghost btn-sm"
+                onclick="document.getElementById('applyAllStrip').classList.add('d-none')">Cancel</button>
+            </div>
+          </div>
+
+          <div class="variant-table-wrap">
+            <table class="variant-table" id="editVariantTable">
+              <thead>
+                <tr>
+                  <th>#</th>
+                  <th>Variant</th>
+                  <th>Price ($)</th>
+                  <th>Stock</th>
+                  <th>Main Image</th>
+                  <th>Additional Images</th>
+                  <th>3D Model URL</th>
+                  <th>Vector Image</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody id="editVariantTableBody">
+                <!-- JS populated -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Preview -->
+      <div class="variant-preview-section mt-4">
+        <div class="variant-preview-label">
+          New Variants to Generate
+          <span class="count-pill" id="editVariantPreviewCount">0</span>
+        </div>
+        <div class="variant-chips" id="editVariantChips">
+          <span style="font-size:.82rem;color:var(--text-muted)">Select colors and sizes above…</span>
+        </div>
+      </div>
+
+      <button class="generate-btn" style="margin-top:20px" onclick="generateEditVariants()">
+        <i class="bi bi-lightning-charge-fill"></i>
+        Generate <span id="editGenerateBtnCount">0</span> New Variants
+      </button>
+  </div>
+  </div>
+
+  <!-- New variants table (shown after generation) -->
+  <div class="section-card d-none" id="newVariantsCard">
+    <div class="section-header">
+      <div class="section-icon green-soft" style="background:var(--green-100);color:var(--green-500)"><i
+          class="bi bi-check-circle-fill"></i></div>
+      <div>
+        <div class="section-title">Fill New Variant Details</div>
+        <div class="section-subtitle">Set price and stock for each new variant</div>
+      </div>
+    </div>
+    <div class="variant-table-wrap">
+      <table class="variant-table" id="newVariantsTable">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Variant</th>
+            <th>Price ($)</th>
+            <th>Stock</th>
+            <th>Main Image</th>
+            <th>Additional Images</th>
+            <th>3D Model URL</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody id="newVariantsBody"></tbody>
+      </table>
+    </div>
+    <div style="padding:16px 24px;border-top:1px solid var(--border);display:flex;justify-content:flex-end">
+      <button class="btn-purple" onclick="saveNewVariants()">
+        <i class="bi bi-plus-circle me-1"></i> Add Variants to Product
+      </button>
+    </div>
+  </div>
+
+  </div>
+
+  <!-- ─── TAB: Size Chart ─── -->
+  <div id="editTab-sizechart" class="edit-tab d-none">
+
+    <div class="section-card">
+      <div class="section-header">
+        <div class="section-icon amber-soft"><i class="bi bi-clipboard-data-fill"></i></div>
+        <div>
+          <div class="section-title">Size Chart</div>
+          <div class="section-subtitle">Body measurement guidelines</div>
+        </div>
+        <div class="ms-auto d-flex gap-2">
+          <button class="btn-ghost btn-sm" onclick="autoFillSizeChart()">
+            <i class="bi bi-magic me-1"></i> Auto-fill
+          </button>
+          <button class="btn-purple btn-sm" onclick="saveSizeChart()">
+            <i class="bi bi-floppy me-1"></i> Save Chart
+          </button>
+        </div>
+      </div>
+      <div class="section-body" style="padding:0;overflow-x:auto">
+        <table class="size-chart-table" id="editSizeChartTable">
+          <thead>
+            <tr>
+              <th>Size</th>
+              <th>Height (cm)</th>
+              <th>Weight (kg)</th>
+              <th>Chest (cm)</th>
+              <th>Waist (cm)</th>
+              <th>Hip (cm)</th>
+              <th>Neck (cm)</th>
+              <th>Shoulder (cm)</th>
+              <th>Arm Length (cm)</th>
+              <th>Leg Length (cm)</th>
+            </tr>
+          </thead>
+          <tbody id="editSizeChartBody"></tbody>
+        </table>
+      </div>
+    </div>
+
+  </div>
+
+  </main>
+
+  <!-- Sticky Save Bar -->
+  <div class="save-bar">
+    <div class="save-bar-info">
+      <i class="bi bi-circle-fill" style="color:var(--gold-400);font-size:.5rem" id="saveIndicator"></i>
+      <span id="saveBarStatus">Editing product…</span>
+    </div>
+    <div class="save-bar-actions">
+      <button class="btn-ghost" onclick="window.location.href='products.html'"><i class="bi bi-x me-1"></i>
+        Discard</button>
+      <button class="btn-purple" onclick="updateProduct()"><i class="bi bi-check2 me-1"></i> Save Changes</button>
+    </div>
+  </div>
+
+  <footer class="page-footer">
+    <span>© 2025 SmartFit.</span>
+    <span class="ms-auto">Edit Product</span>
+  </footer>
+  </div>
+
+  <div class="toast-container" id="toastContainer"></div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="js/auth-guard.js"></script>
+  <script src="js/product-edit.js"></script>
+</body>
+
+</html>

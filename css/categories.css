@@ -1,0 +1,116 @@
+.badge-men {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 4px 12px;
+    border-radius: 999px;
+    font-size: .72rem;
+    font-weight: 700;
+    background: var(--indigo-100);
+    color: var(--indigo-400);
+    border: 1px solid rgba(129, 140, 248, .25)
+}
+
+.badge-women {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 4px 12px;
+    border-radius: 999px;
+    font-size: .72rem;
+    font-weight: 700;
+    background: var(--rose-100);
+    color: var(--rose-500);
+    border: 1px solid rgba(232, 55, 110, .25)
+}
+
+.badge-unisex {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 4px 12px;
+    border-radius: 999px;
+    font-size: .72rem;
+    font-weight: 700;
+    background: var(--purple-100);
+    color: var(--purple-500);
+    border: 1px solid rgba(124, 77, 255, .25)
+}
+
+.modal-content {
+    border-radius: 20px !important;
+    border: 1px solid var(--border) !important;
+    background: var(--bg-card) !important
+}
+
+.modal-header {
+    border-bottom: 1px solid var(--border) !important;
+    padding: 20px 24px !important
+}
+
+.modal-footer {
+    border-top: 1px solid var(--border) !important;
+    padding: 14px 24px !important
+}
+
+.modal-title {
+    font-family: 'Cormorant Garamond', serif !important;
+    font-size: 1.2rem !important;
+    font-weight: 700 !important;
+    color: var(--text-primary) !important
+}
+
+.form-label-sm {
+    font-size: .78rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 5px;
+    display: block
+}
+
+.form-ctrl {
+    width: 100%;
+    padding: 10px 13px;
+    border: 1px solid var(--border);
+    border-radius: 9px;
+    background: var(--bg);
+    color: var(--text-primary);
+    font-size: .875rem;
+    font-family: 'DM Sans', sans-serif;
+    outline: none;
+    transition: all .22s
+}
+
+.form-ctrl:focus {
+    border-color: var(--purple-400);
+    box-shadow: 0 0 0 3px rgba(124, 77, 255, .1);
+    background: var(--bg-card)
+}
+
+.confirm-icon-wrap {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 16px;
+    font-size: 1.5rem
+}
+
+.cat-name-cell {
+    display: flex;
+    align-items: center;
+    gap: 10px
+}
+
+.cat-icon-wrap {
+    width: 36px;
+    height: 36px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: .95rem;
+    flex-shrink: 0
+}

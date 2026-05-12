@@ -1,0 +1,251 @@
+    /* ── Reviews-specific styles ── */
+    .stars-display {
+        display: inline-flex;
+        gap: 2px;
+        align-items: center
+    }
+
+    .star-filled {
+        color: #f8c84b;
+        font-size: inherit
+    }
+
+    .star-empty {
+        color: #e2d9f3;
+        font-size: inherit
+    }
+
+    /* Rating bar */
+    .rating-bar-wrap {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin-bottom: 6px
+    }
+
+    .rating-bar-label {
+        font-size: .75rem;
+        font-weight: 600;
+        color: var(--text-secondary);
+        width: 40px;
+        flex-shrink: 0;
+        text-align: right
+    }
+
+    .rating-bar {
+        flex: 1;
+        height: 7px;
+        background: var(--border);
+        border-radius: 99px;
+        overflow: hidden
+    }
+
+    .rating-bar-fill {
+        height: 100%;
+        border-radius: 99px;
+        background: linear-gradient(90deg, #f8c84b, #f97316);
+        transition: width .6s cubic-bezier(.4, 0, .2, 1)
+    }
+
+    .rating-bar-count {
+        font-size: .72rem;
+        color: var(--text-muted);
+        width: 28px;
+        flex-shrink: 0
+    }
+
+    /* Stat card override for avg rating */
+    .stat-rating-big {
+        font-family: 'Cormorant Garamond', serif;
+        font-size: 2.2rem;
+        font-weight: 700;
+        color: var(--text-primary);
+        line-height: 1
+    }
+
+    .stat-stars-sm {
+        font-size: .85rem;
+        margin-top: 4px;
+        display: flex;
+        gap: 2px
+    }
+
+    /* Review avatar */
+    .rev-avatar {
+        width: 36px;
+        height: 36px;
+        border-radius: 50%;
+        object-fit: cover;
+        border: 2px solid var(--border);
+        flex-shrink: 0
+    }
+
+    .rev-avatar-placeholder {
+        width: 36px;
+        height: 36px;
+        border-radius: 50%;
+        background: linear-gradient(135deg, var(--purple-400), var(--purple-600));
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #fff;
+        font-size: .8rem;
+        font-weight: 700;
+        flex-shrink: 0
+    }
+
+    .rev-product-img {
+        width: 40px;
+        height: 40px;
+        border-radius: 9px;
+        object-fit: cover;
+        border: 1px solid var(--border);
+        flex-shrink: 0
+    }
+
+    .rev-product-img-placeholder {
+        width: 40px;
+        height: 40px;
+        border-radius: 9px;
+        background: var(--purple-100);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--purple-400);
+        font-size: .9rem;
+        flex-shrink: 0
+    }
+
+    .cell-with-img {
+        display: flex;
+        align-items: center;
+        gap: 10px
+    }
+
+    .cell-name {
+        font-weight: 600;
+        font-size: .87rem;
+        color: var(--text-primary)
+    }
+
+    .comment-preview {
+        font-size: .82rem;
+        color: var(--text-secondary);
+        max-width: 220px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap
+    }
+
+    /* Modal review */
+    .modal-content {
+        border-radius: 20px !important;
+        border: 1px solid var(--border) !important;
+        background: var(--bg-card) !important
+    }
+
+    .modal-header {
+        border-bottom: 1px solid var(--border) !important;
+        padding: 20px 24px !important
+    }
+
+    .modal-title {
+        font-family: 'Cormorant Garamond', serif !important;
+        font-size: 1.2rem !important;
+        font-weight: 700 !important;
+        color: var(--text-primary) !important
+    }
+
+    .review-modal-product {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        padding: 14px;
+        background: var(--bg);
+        border: 1px solid var(--border);
+        border-radius: 12px;
+        margin-bottom: 16px
+    }
+
+    .review-modal-product img {
+        width: 56px;
+        height: 56px;
+        border-radius: 10px;
+        object-fit: cover;
+        border: 1px solid var(--border)
+    }
+
+    .review-modal-user {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        margin-bottom: 16px
+    }
+
+    .review-modal-user img {
+        width: 46px;
+        height: 46px;
+        border-radius: 50%;
+        object-fit: cover;
+        border: 2px solid var(--purple-200)
+    }
+
+    .review-modal-comment {
+        background: var(--bg);
+        border: 1px solid var(--border);
+        border-radius: 12px;
+        padding: 16px;
+        font-size: .9rem;
+        line-height: 1.7;
+        color: var(--text-primary);
+        font-style: italic;
+        position: relative
+    }
+
+    .review-modal-comment::before {
+        content: '"';
+        font-family: 'Cormorant Garamond', serif;
+        font-size: 3rem;
+        color: var(--purple-200);
+        position: absolute;
+        top: -8px;
+        left: 12px;
+        line-height: 1
+    }
+
+    /* Star filter pills */
+    .star-filter-pill {
+        display: inline-flex;
+        align-items: center;
+        gap: 4px;
+        padding: 5px 12px;
+        border-radius: 999px;
+        font-size: .78rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all .2s;
+        border: 1px solid var(--border);
+        background: var(--bg-card);
+        color: var(--text-secondary)
+    }
+
+    .star-filter-pill:hover,
+    .star-filter-pill.active {
+        background: var(--gold-100);
+        border-color: var(--gold-400);
+        color: #b45309
+    }
+
+    /* Confirm modal */
+    .confirm-icon-wrap {
+        width: 60px;
+        height: 60px;
+        background: var(--rose-100);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto 16px;
+        font-size: 1.5rem;
+        color: var(--rose-500)
+    }

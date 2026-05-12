@@ -1,0 +1,372 @@
+    /* ── Users-specific extras ── */
+    .user-avatar {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid var(--border);
+      background: var(--purple-100);
+      flex-shrink: 0
+    }
+
+    .user-avatar-lg {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid var(--purple-200)
+    }
+
+    .user-avatar-placeholder {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--purple-400), var(--purple-600));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      font-size: .9rem;
+      font-weight: 700;
+      flex-shrink: 0
+    }
+
+    .user-avatar-placeholder-lg {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--purple-400), var(--purple-600));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      font-size: 1.8rem;
+      font-weight: 700;
+      margin: 0 auto
+    }
+
+    .user-cell {
+      display: flex;
+      align-items: center;
+      gap: 12px
+    }
+
+    .user-cell-info .name {
+      font-weight: 600;
+      font-size: .88rem;
+      color: var(--text-primary)
+    }
+
+    .user-cell-info .sub {
+      font-size: .74rem;
+      color: var(--text-muted);
+      margin-top: 1px
+    }
+
+    .badge-role-admin {
+      background: linear-gradient(135deg, rgba(124, 77, 255, .15), rgba(124, 77, 255, .05));
+      color: var(--purple-500);
+      border: 1px solid rgba(124, 77, 255, .25);
+      padding: 3px 10px;
+      border-radius: 999px;
+      font-size: .72rem;
+      font-weight: 700;
+      letter-spacing: .04em
+    }
+
+    .badge-role-user {
+      background: var(--teal-100);
+      color: var(--teal-400);
+      border: 1px solid rgba(45, 212, 191, .25);
+      padding: 3px 10px;
+      border-radius: 999px;
+      font-size: .72rem;
+      font-weight: 600
+    }
+
+    .badge-active {
+      background: var(--green-100);
+      color: #16a34a;
+      padding: 3px 10px;
+      border-radius: 999px;
+      font-size: .72rem;
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px
+    }
+
+    .badge-active::before {
+      content: '';
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: #16a34a
+    }
+
+    .badge-inactive {
+      background: var(--rose-100);
+      color: var(--rose-500);
+      padding: 3px 10px;
+      border-radius: 999px;
+      font-size: .72rem;
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px
+    }
+
+    .badge-inactive::before {
+      content: '';
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: var(--rose-500)
+    }
+
+    .body-profile-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      margin-top: 12px
+    }
+
+    .bp-item {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 10px;
+      text-align: center
+    }
+
+    .bp-value {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--text-primary)
+    }
+
+    .bp-label {
+      font-size: .68rem;
+      text-transform: uppercase;
+      letter-spacing: .07em;
+      color: var(--text-muted);
+      margin-top: 2px
+    }
+
+    .modal-content {
+      border-radius: 20px !important;
+      border: 1px solid var(--border) !important;
+      background: var(--bg-card) !important
+    }
+
+    .modal-header {
+      border-bottom: 1px solid var(--border) !important;
+      padding: 20px 24px !important
+    }
+
+    .modal-footer {
+      border-top: 1px solid var(--border) !important;
+      padding: 16px 24px !important
+    }
+
+    .modal-title {
+      font-family: 'Cormorant Garamond', serif !important;
+      font-size: 1.2rem !important;
+      font-weight: 700 !important;
+      color: var(--text-primary) !important
+    }
+
+    .form-label-sm {
+      font-size: .78rem;
+      font-weight: 600;
+      color: var(--text-primary);
+      margin-bottom: 5px
+    }
+
+    .form-ctrl {
+      width: 100%;
+      padding: 9px 12px;
+      border: 1px solid var(--border);
+      border-radius: 9px;
+      background: var(--bg);
+      color: var(--text-primary);
+      font-size: .85rem;
+      font-family: 'DM Sans', sans-serif;
+      outline: none;
+      transition: all .22s
+    }
+
+    .form-ctrl:focus {
+      border-color: var(--purple-400);
+      box-shadow: 0 0 0 3px rgba(124, 77, 255, .1);
+      background: var(--bg-card)
+    }
+
+    .toggle-wrap {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 10px 0
+    }
+
+    .toggle-label {
+      font-size: .85rem;
+      color: var(--text-primary);
+      font-weight: 500
+    }
+
+    .toggle-sub {
+      font-size: .74rem;
+      color: var(--text-muted);
+      margin-top: 1px
+    }
+
+    .form-switch .form-check-input {
+      width: 2.4em;
+      height: 1.2em;
+      cursor: pointer
+    }
+
+    .form-switch .form-check-input:checked {
+      background-color: var(--purple-500);
+      border-color: var(--purple-500)
+    }
+
+    .section-divider {
+      font-size: .72rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: .1em;
+      color: var(--text-muted);
+      margin: 16px 0 10px;
+      display: flex;
+      align-items: center;
+      gap: 8px
+    }
+
+    .section-divider::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--border)
+    }
+
+    .avatar-section {
+      text-align: center;
+      padding: 20px 0 10px;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 16px
+    }
+
+    .avatar-section .name-big {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-top: 10px
+    }
+
+    .detail-kv {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 8px 0;
+      border-bottom: 1px solid var(--border);
+      font-size: .84rem
+    }
+
+    .detail-kv:last-child {
+      border-bottom: none
+    }
+
+    .detail-kv .key {
+      color: var(--text-muted);
+      font-size: .78rem;
+      text-transform: uppercase;
+      letter-spacing: .06em
+    }
+
+    .detail-kv .val {
+      font-weight: 500;
+      color: var(--text-primary);
+      text-align: right
+    }
+
+    /* تنسيقات إضافية لتحسين المظهر */
+    .section-title-sm {
+      font-size: .7rem;
+      font-weight: 700;
+      letter-spacing: .1em;
+      color: #888;
+      margin-bottom: 15px;
+      text-transform: uppercase;
+    }
+
+    .profile-card-v2 {
+      background: rgba(255, 255, 255, 0.03);
+      /* يتناسب مع الثيم الغامق */
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 12px;
+      overflow: hidden;
+    }
+
+    .profile-card-header {
+      background: rgba(255, 255, 255, 0.05);
+      padding: 8px 15px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-weight: 600;
+      font-size: 0.85rem;
+    }
+
+    .bp-grid-mini {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      padding: 15px;
+    }
+
+    .bp-box {
+      background: rgba(0, 0, 0, 0.2);
+      padding: 8px;
+      border-radius: 8px;
+      text-align: center;
+    }
+
+    .bp-box strong {
+      display: block;
+      font-size: 0.9rem;
+    }
+
+    .bp-box small {
+      font-size: 0.65rem;
+      color: #aaa;
+    }
+
+    .ai-avatar-thumb {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      border: 2px solid #6366f1;
+      margin-bottom: 5px;
+    }
+
+
+    .dropdown-user-name {
+      font-size: .85rem;
+      font-weight: 600;
+      color: var(--text-primary);
+      line-height: 1.2;
+    }
+
+    .dropdown-user-email {
+      font-size: .74rem;
+      color: var(--text-muted);
+      margin-top: 2px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      max-width: 180px;
+    }
